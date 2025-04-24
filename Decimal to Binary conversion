@@ -1,0 +1,22 @@
+int main () {
+   int choice;
+cout<<"1.Decimal to binary\n";
+cout<<"2.Binary to decimal\n";
+cout<<"choose option (1 or 2):";
+cin>>choice;
+
+if(choice==1){
+int decimal;
+count<<"Enter a decimal number(non-negative):";
+cin>>decimal;
+count<<"Binary:"<<decimalToBinary(decimal)<<endl;
+}else if (choice ==2){
+string binary;
+cout<<"Decimal:"binaryToDecimal(binary)<<endl;
+}else{
+cout<<"Invalid choice."<<endl;
+}
+
+return
+
+}
