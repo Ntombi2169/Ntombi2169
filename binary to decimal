@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to convert decimal to binary
+string decimalToBinary(int decimal) {
+    if (decimal == 0) return "0";
+
+    string binary = "";
+    bool isNegative = false;
+
+    if (decimal < 0) {
+        isNegative = true;
+        decimal = -decimal;
+    }
+
+    while (decimal > 0) {
+        binary = to_string(decimal % 2) + binary;
+        decimal /= 2;
+    }
+
+    if (isNegative) {
+        binary = "-" + binary;
+    }
+
+    return binary;
+}
+
+// Function to convert binary to decimal
+int binaryToDecimal(string binary) {
+    int decimal = 0;
+    bool isNegative = false;
+    int startIndex = 0;
+
+    if (binary[0] == '-') {
+        isNegative = true;
+        startIndex = 1;
+    }
+
+    for (int i = startIndex; i < binary.length(); i++) {
+        if (binary[i] != '0' && binary[i] != '1') {
+            cerr << "Invalid binary number!" << endl;
+            return 0;
+        }
+        decimal = (decimal << 1) + (binary[i] - '0');
+    }
+
+    return isNegative ? -decimal : decimal;
+}
+
+int main() {
+    int choice;
+
+    cout << "Conversion Menu:" << endl;
+    cout << "1. Decimal to Binary" << endl;
+    cout << "2. Binary to Decimal" << endl;
+    cout << "Enter your choice (1 or 2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int decimal;
+        cout << "Enter a decimal number: ";
+        cin >> decimal;
+        cout << "Binary representation: " << decimalToBinary(decimal) << endl;
+    } else if (choice == 2) {
+        string binary;
+        cout << "Enter a binary number: ";
+        cin >> binary;
+        cout << "Decimal representation: " << binaryToDecimal(binary) << endl;
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
